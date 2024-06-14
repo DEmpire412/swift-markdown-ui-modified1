@@ -30,17 +30,17 @@ import Foundation
 /// ```
 public struct InlineLink: InlineContentProtocol {
   public var _inlineContent: InlineContent {
-    .init(inlines: [.link(destination: self.destination, children: self.content.inlines)])
+      .init(inlines: [.link(destination: self.destination, self.content.inlines)])
   }
-
+  
   private let destination: String
   private let content: InlineContent
-
+  
   init(destination: String, content: InlineContent) {
     self.destination = destination
     self.content = content
   }
-
+  
   /// Creates a link to a given destination with an unstyled text title.
   /// - Parameters:
   ///   - text: The title of the link.
@@ -48,7 +48,7 @@ public struct InlineLink: InlineContentProtocol {
   public init(_ text: String, destination: URL) {
     self.init(destination: destination.absoluteString, content: .init(inlines: [.text(text)]))
   }
-
+  
   /// Creates a link to a given destination with a title composed of other inlines.
   /// - Parameters:
   ///   - destination: The URL for the link.
@@ -57,3 +57,5 @@ public struct InlineLink: InlineContentProtocol {
     self.init(destination: destination.absoluteString, content: content())
   }
 }
+
+
