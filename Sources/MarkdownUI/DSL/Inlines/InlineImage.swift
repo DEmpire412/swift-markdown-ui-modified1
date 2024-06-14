@@ -26,7 +26,7 @@ import Foundation
 /// ![](InlineImage)
 public struct InlineImage: InlineContentProtocol {
   public var _inlineContent: InlineContent {
-    .init(inlines: [.image(source: self.source, children: self.content.inlines)])
+      .init(inlines: [.image(source: self.source, self.content.inlines)])
   }
 
   private let source: String
@@ -52,3 +52,4 @@ public struct InlineImage: InlineContentProtocol {
     self.init(source: source.absoluteString, content: .init(inlines: [.text(text)]))
   }
 }
+
